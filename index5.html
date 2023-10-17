@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Remove Vowels</title>
+  </head>
+
+  <body>
+    <div>
+      <label for="inputText">Enter a string:</label>
+      <input type="text" id="inputText" />
+      <button onclick="removeVowels()">Remove Vowels</button>
+    </div>
+    <div id="output"></div>
+
+    <script>
+      function removeVowels() {
+        var inputText = document.getElementById("inputText").value;
+        var outputText = inputText.replace(/[aeiouAEIOU]/g, ""); // Regular expression to remove vowels
+        displayOutput(outputText);
+      }
+
+      function displayOutput(outputText) {
+        var outputDiv = document.getElementById("output");
+        outputDiv.innerHTML = "<h2>String without Vowels:</h2>";
+        var resultParagraph = document.createElement("p");
+        resultParagraph.textContent = outputText;
+        outputDiv.appendChild(resultParagraph);
+      }
+    </script>
+  </body>
+</html>

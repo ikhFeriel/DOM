@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stack Data Structure</title>
+  </head>
+
+  <body>
+    <div>
+      <label for="stackInput">Enter a value:</label>
+      <input type="text" id="stackInput" />
+      <button onclick="pushToStack()">Push</button>
+      <button onclick="popFromStack()">Pop</button>
+    </div>
+    <div id="stack"></div>
+
+    <script>
+      var stack = [];
+
+      function pushToStack() {
+        var inputValue = document.getElementById("stackInput").value;
+        stack.push(inputValue);
+        updateStackView();
+      }
+
+      function popFromStack() {
+        if (stack.length > 0) {
+          stack.pop();
+          updateStackView();
+        } else {
+          alert("Stack is empty.");
+        }
+      }
+
+      function updateStackView() {
+        var stackDiv = document.getElementById("stack");
+        stackDiv.innerHTML = "<h2>Stack:</h2>";
+        if (stack.length > 0) {
+          var ul = document.createElement("ul");
+          for (var i = stack.length - 1; i >= 0; i--) {
+            var li = document.createElement("li");
+            li.textContent = stack[i];
+            ul.appendChild(li);
+          }
+          stackDiv.appendChild(ul);
+        } else {
+          stackDiv.textContent = "Stack is empty.";
+        }
+      }
+    </script>
+  </body>
+</html>

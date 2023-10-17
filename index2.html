@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Filter People Over 30</title>
+  </head>
+
+  <body>
+    <div id="result"></div>
+
+    <script>
+      function Person(name, age, email) {
+        this.name = name;
+        this.age = age;
+        this.email = email;
+      }
+
+      var people = [
+        new Person("me", 25, "me@gmail.com"),
+        new Person("bakhta", 35, "bakhta@gmail.com"),
+        new Person("mahdjouba", 28, "mahdjouba@gmail.com"),
+        new Person("zoulikha", 40, "zoulikha@gmail.com"),
+      ];
+
+      function filterPeopleOver30(peopleArray) {
+        return peopleArray.filter(function (person) {
+          return person.age > 30;
+        });
+      }
+
+      var filteredPeople = filterPeopleOver30(people);
+      var resultDiv = document.getElementById("result");
+      resultDiv.innerHTML = "<h2>Arabe person over 30: </h2>";
+      if (filteredPeople.length > 0) {
+        var ul = document.createElement("ul");
+        filteredPeople.forEach(function (person) {
+          var li = document.createElement("li");
+          li.textContent =
+            "Name: " +
+            person.name +
+            ", Age: " +
+            person.age +
+            ", Email: " +
+            person.email;
+          ul.appendChild(li);
+        });
+        resultDiv.appendChild(ul);
+      } else {
+        resultDiv.textContent = "No arabe people over 30 found.";
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Even Numbers Filter</title>
+  </head>
+
+  <body>
+    <div>
+      <label for="numbersInput">Enter numbers (comma separated):</label>
+      <input type="text" id="numbersInput" />
+      <button onclick="filterEvenNumbers()">Filter Even Numbers</button>
+    </div>
+    <div id="result"></div>
+
+    <script>
+      function filterEvenNumbers() {
+        var numbersInput = document.getElementById("numbersInput").value;
+        var numbersArray = numbersInput.split(",").map(Number); // Convert input string to array of numbers
+        var evenNumbers = numbersArray.filter(function (number) {
+          return number % 2 === 0;
+        });
+        displayResult(evenNumbers);
+      }
+
+      function displayResult(evenNumbers) {
+        var resultDiv = document.getElementById("result");
+        resultDiv.innerHTML = "<h2>Even Numbers: </h2>";
+        if (evenNumbers.length > 0) {
+          var ul = document.createElement("ul");
+          evenNumbers.forEach(function (number) {
+            var li = document.createElement("li");
+            li.textContent = number;
+            ul.appendChild(li);
+          });
+          resultDiv.appendChild(ul);
+        } else {
+          resultDiv.textContent = "No even numbers found in the input.";
+        }
+      }
+    </script>
+  </body>
+</html>

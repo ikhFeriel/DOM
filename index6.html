@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Unique Elements from Two Arrays</title>
+  </head>
+
+  <body>
+    <div>
+      <label for="array1Input"
+        >Enter numbers for array 1 (comma separated):</label
+      >
+      <input type="text" id="array1Input" />
+      <label for="array2Input"
+        >Enter numbers for array 2 (comma separated):</label
+      >
+      <input type="text" id="array2Input" />
+      <button onclick="getUniqueElements()">Get Unique Elements</button>
+    </div>
+    <div id="result"></div>
+
+    <script>
+      function getUniqueElements() {
+        var array1Input = document.getElementById("array1Input").value;
+        var array2Input = document.getElementById("array2Input").value;
+        var array1 = array1Input.split(",").map(Number);
+        var array2 = array2Input.split(",").map(Number);
+
+        var uniqueElements = Array.from(new Set([...array1, ...array2]));
+
+        displayResult(uniqueElements);
+      }
+
+      function displayResult(uniqueElements) {
+        var resultDiv = document.getElementById("result");
+        resultDiv.innerHTML = "<h2>Unique Elements:</h2>";
+        var ul = document.createElement("ul");
+        uniqueElements.forEach(function (element) {
+          var li = document.createElement("li");
+          li.textContent = element;
+          ul.appendChild(li);
+        });
+        resultDiv.appendChild(ul);
+      }
+    </script>
+  </body>
+</html>
